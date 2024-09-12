@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Sidebar from './components/Sidebar';  // Your Sidebar Component
+import Header from './components/Header';  // Example Component
 
-function App() {
+const App = () => {
+
+  const [isMenuCollapsed, setIsMenuCollapsed] = useState(false);
+
+    const handleMenuToggle = () => {
+        setIsMenuCollapsed(!isMenuCollapsed);
+         
+    };  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Sidebar />
+      <div class="flapt-page-content">
+      <Header onButtonClick={handleMenuToggle} /> 
+      </div> 
+    </Router>
   );
-}
+};
 
 export default App;
